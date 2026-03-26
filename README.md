@@ -5,7 +5,7 @@
 <h1 align="center">Chronicler</h1>
 
 <p align="center">
-  <strong>The faithful scribe of Camelot — because even the Knights of the Round Table needed someone to write down what happened.</strong>
+  <strong>The faithful scribe of Camelot</strong> — <em>&ldquo;because even the Knights of the Round Table needed someone to write down what happened.&rdquo;</em>
 </p>
 
 <p align="center">
