@@ -1,15 +1,15 @@
 <p align="center">
-  <img src="img/logo_horizontal_text_white.svg" alt="Excalibur" width="420">
+  <img src="img/logo_horizontal_text_white.svg" alt="Excalibur" width="380">
 </p>
 
-<h1 align="center">Excalibur Chronicler</h1>
+<h1 align="center">Chronicler</h1>
 
 <p align="center">
   <strong>The faithful scribe of Camelot — because even the Knights of the Round Table needed someone to write down what happened.</strong>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/platform-linux%20%7C%20macos-blue" alt="Platform">
+  <img src="https://img.shields.io/badge/platform-linux-blue" alt="Platform">
   <img src="https://img.shields.io/badge/runtime-docker%20%7C%20kubectl-blue" alt="Runtime">
   <img src="https://img.shields.io/badge/shell-bash%204.0%2B-green" alt="Shell">
   <img src="https://img.shields.io/badge/excalibur%20SAM-v4.0%2B-purple" alt="Excalibur SAM">
@@ -37,15 +37,13 @@ Excalibur Chronicler exports application logs from an Excalibur v4 SAM (Streamed
 
 ## Compatibility
 
-| Requirement       | Details                             |
-| ----------------- | ----------------------------------- |
-| Excalibur SAM     | v4.0+                               |
-| Container runtime | Docker or Kubernetes (`kubectl`)    |
-| Shell             | Bash 4.0+                           |
-| Host OS           | Linux, macOS (with GNU `coreutils`) |
-| Optional          | `openssl` (for encrypted exports)   |
-
-> **macOS note:** The `--from` / `--to` options require GNU `date`. Install it with `brew install coreutils` and ensure `gdate` is available, or run the script on the Excalibur host directly.
+| Requirement       | Details                           |
+| ----------------- | --------------------------------- |
+| Excalibur SAM     | v4.0+                             |
+| Container runtime | Docker or Kubernetes (`kubectl`)  |
+| Shell             | Bash 4.0+                         |
+| Host OS           | Linux                             |
+| Optional          | `openssl` (for encrypted exports) |
 
 ## Prerequisites
 
@@ -60,6 +58,12 @@ Download the script and make it executable:
 ```bash
 curl -fsSL https://raw.githubusercontent.com/excalibur-enterprise/excalibur-v4-chronicler/main/excalibur-chronicler.sh -o excalibur-chronicler.sh
 chmod +x excalibur-chronicler.sh
+```
+
+Verify the download integrity:
+
+```bash
+echo "76a4b1d7bd1862044496fcacfc4d14df5fe544dacb6ee089659697038a75c3f6  excalibur-chronicler.sh" | sha256sum -c
 ```
 
 Export logs with default settings:
