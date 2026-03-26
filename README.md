@@ -56,7 +56,7 @@ Excalibur Chronicler exports application logs from an Excalibur v4 SAM (Streamed
 Download the script and make it executable:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/excalibur-enterprise/excalibur-v4-chronicler/main/excalibur-chronicler.sh -o excalibur-chronicler.sh
+curl -fsSL https://raw.githubusercontent.com/excalibur-enterprise/excalibur-v4-chronicler/refs/heads/devel/excalibur-chronicler.sh -o excalibur-chronicler.sh
 chmod +x excalibur-chronicler.sh
 ```
 
