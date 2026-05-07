@@ -107,6 +107,7 @@ Options:
     -C, --container NAME  Specific container/pod name to exec into (auto-detected if omitted)
     -N, --namespace NS    Kubernetes namespace (default: excalibur, ignored for docker)
         --loki-url URL    Loki URL inside the container network (default: http://loki:3100)
+        --batch-size N    Number of log entries per paginated request (default: 5000)
     -y, --yes             Skip confirmation prompt
     -v, --verbose         Enable verbose output
     -h, --help            Show this help message
@@ -141,6 +142,9 @@ Examples:
 
     # Export last 1 week with custom output path
     $SCRIPT_NAME --since 1w --output /tmp
+
+    # Use a smaller batch size to avoid Loki timeouts
+    $SCRIPT_NAME --since 6h --batch-size 1000
 EOF
     exit "${1:-0}"
 }
@@ -208,6 +212,20 @@ while [[ $# -gt 0 ]]; do
         --loki-url)
             [[ $# -ge 2 ]] || { log_error "--loki-url requires a value"; usage 1; }
             LOKI_URL="$2"
+            shift 2
+            ;;
+        --batch-size)
+            [[ $# -ge 2 ]] || { log_error "--batch-size requires a value"; usage 1; }
+            if ! [[ "$2" =~ ^[0-9]+$ ]] || [[ "$2" -le 0 ]]; then
+                log_error "--batch-size must be a positive integer"
+                exit 1
+            fi
+            BATCH_SIZE="$2"
+            if [[ "$BATCH_SIZE" -lt 100 ]]; then
+                log_warn "Batch size ${BATCH_SIZE} is very low; exports may be slow"
+            elif [[ "$BATCH_SIZE" -gt 50000 ]]; then
+                log_warn "Batch size ${BATCH_SIZE} is very high; Loki may timeout on large batches"
+            fi
             shift 2
             ;;
         -v|--verbose)
