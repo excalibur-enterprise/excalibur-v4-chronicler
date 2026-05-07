@@ -143,6 +143,7 @@ For **Kubernetes** deployments, specify the runtime explicitly:
 | `-C`, `--container NAME` | Container/pod name to exec into                           | auto-detected                     |
 | `-N`, `--namespace NS`   | Kubernetes namespace (ignored for Docker)                 | `excalibur`                       |
 | `--loki-url URL`         | Loki URL inside the container network                     | `http://loki:3100`                |
+| `--batch-size N`         | Number of log entries per paginated request to Loki       | `5000`                            |
 | `-y`, `--yes`            | Skip the confirmation prompt                              | off                               |
 | `-v`, `--verbose`        | Enable verbose/debug output                               | off                               |
 | `-h`, `--help`           | Show help message                                         | —                                 |
