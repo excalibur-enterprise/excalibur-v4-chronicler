@@ -35,7 +35,7 @@ SCRIPT_NAME="$(basename -- "${BASH_SOURCE[0]}")"
 # -----------------------------------------------------------------------------
 # Defaults
 # -----------------------------------------------------------------------------
-SINCE="24h"
+SINCE="2h"
 SINCE_SET=false
 SINCE_SECONDS=0
 DATE_FROM=""
@@ -95,7 +95,7 @@ Usage: $SCRIPT_NAME [OPTIONS]
 Export Excalibur application logs from Loki for support analysis.
 
 Options:
-    -t, --since DURATION  Time range to export: e.g. 30m, 6h, 2d, 1w (default: 24h, max: 30d)
+    -t, --since DURATION  Time range to export: e.g. 30m, 6h, 2d, 1w (default: 2h, max: 30d)
         --from DATETIME   Start of date range (ISO 8601: 2026-03-20 or 2026-03-20T14:00:00)
         --to DATETIME     End of date range (default: now). Requires --from
     -l, --level LEVEL     Filter by log level: error, warn, info, debug (default: all)
@@ -112,7 +112,7 @@ Options:
     -h, --help            Show this help message
 
 Examples:
-    # Export last 24h of all logs (docker)
+    # Export last 2h of all logs (docker)
     $SCRIPT_NAME
 
     # Export last 6h of errors only

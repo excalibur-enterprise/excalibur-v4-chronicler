@@ -82,7 +82,7 @@ Example output:
 [2026-03-26 14:15:01] INFO: Consulting the Oracle (Loki)...
 [2026-03-26 14:15:01] INFO: The Oracle responds.
 [2026-03-26 14:15:01] INFO: LogQL query: {product="excalibur-v4"}
-[2026-03-26 14:15:01] INFO: Time range: last 24h
+[2026-03-26 14:15:01] INFO: Time range: last 2h
 [2026-03-26 14:15:01] INFO: Querying log statistics...
 [2026-03-26 14:15:02] INFO:
 [2026-03-26 14:15:02] INFO: Estimated export:
@@ -109,7 +109,7 @@ With no options, the script:
 
 - Uses **Docker** as the container runtime (`--runtime docker`)
 - Auto-detects the `api` container in the running Excalibur stack
-- Exports **all log levels** and **all services** from the **last 24 hours**
+- Exports **all log levels** and **all services** from the **last 2 hours**
 - Queries Loki at `http://loki:3100` inside the container network
 - Saves the archive to the **current directory**
 
@@ -131,7 +131,7 @@ For **Kubernetes** deployments, specify the runtime explicitly:
 
 | Flag                     | Description                                               | Default                           |
 | ------------------------ | --------------------------------------------------------- | --------------------------------- |
-| `-t`, `--since DURATION` | Time range to export: `30m`, `6h`, `2d`, `1w`             | `24h`                             |
+| `-t`, `--since DURATION` | Time range to export: `30m`, `6h`, `2d`, `1w`             | `2h`                              |
 | `--from DATETIME`        | Start of date range (ISO 8601)                            | —                                 |
 | `--to DATETIME`          | End of date range. Requires `--from`                      | now                               |
 | `-l`, `--level LEVEL`    | Filter by log level: `error`, `warn`, `info`, `debug`     | all                               |
